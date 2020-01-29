@@ -7,10 +7,10 @@ var rest = require('restler');
 //-----------------------------------------------------------------------------
 var API_KEY_PLACEHOLDER = process.env.WMATA_API_KEY || '2cc419c974f94b5486dd79d698f7d3f6';
 var BEERME = process.env.BEERME || false;
-var RAINBOW = process.env.RAINBOW || true;
+var RAINBOW = process.env.RAINBOW || false;
 console.log("using WMATA API Key - " + API_KEY_PLACEHOLDER);
 if (BEERME == 'true') { console.log("Beer Me! "); }
-if (RAINBOW == 'false') { console.log("Rainbows! "); }
+if (RAINBOW == 'true') { console.log("Rainbows! "); }
 
 // var DCBEER = {
 //     type: "FeatureCollection",
@@ -39,7 +39,8 @@ function wmataJsonToGeoJson(jsonData) {
 
   if (jsonData.BusPositions) {
     jsonData.BusPositions.forEach(function(item, index) {
-      if (RAINBOW == 'false') { markerColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16); }
+      // if (RAINBOW == 'true') { markerColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16); }
+      markerColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
       dataOut.features.push({type:"Feature",
           geometry: {
               type: "Point",
