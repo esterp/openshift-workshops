@@ -10,7 +10,7 @@ var BEERME = process.env.BEERME || false;
 var RAINBOW = process.env.RAINBOW || true;
 console.log("using WMATA API Key - " + API_KEY_PLACEHOLDER);
 if (BEERME == 'true') { console.log("Beer Me! "); }
-if (RAINBOW == 'true') { console.log("Rainbows! "); }
+if (RAINBOW == 'false') { console.log("Rainbows! "); }
 
 // var DCBEER = {
 //     type: "FeatureCollection",
@@ -39,7 +39,7 @@ function wmataJsonToGeoJson(jsonData) {
 
   if (jsonData.BusPositions) {
     jsonData.BusPositions.forEach(function(item, index) {
-      if (RAINBOW == 'true') { markerColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16); }
+      if (RAINBOW == 'false') { markerColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16); }
       dataOut.features.push({type:"Feature",
           geometry: {
               type: "Point",
